@@ -13,6 +13,10 @@ angular.module('ngPullDown', ['ui.router', 'ngFx'])
         '': { templateUrl: 'views/main.html'},
         'article@main' : { templateUrl: 'views/article.html'}
       }
+    })
+    .state('main.source', {
+      url: '/main/source',
+      templateUrl: 'views/source.html'
     });
  
 });
