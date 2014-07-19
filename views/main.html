@@ -1,4 +1,9 @@
 <h1>Pull-down iFrame using ng-Fx</h1>
 
-<a ui-sref=".source" class="btn btn-primary">View Source</a>
-<div ui-view="article"></div>
+  <!-- <a ng-controller="mainCtrl" ng-click="showOrHideSource">{{ viewOrHide }}</a> -->
+  <a ui-sref=".source" ng-controller="mainCtrl" ng-click="showOrHideSource()">
+  {{ viewOrHide }}
+  </a>
+  <!-- <a ui-sref=".source" class="btn btn-primary"></a> -->
+  <div ui-view style="width: 80%; margin:0 auto;" ></div>
+  <div ui-view="article" position="absolute"></div>
