@@ -1,0 +1,20 @@
+{
+  "name": "ngPullDown",
+  "version": "0.0.0",
+  "homepage": "https://github.com/adrice727/ngPullDown",
+  "authors": [
+    "Aaron Rice <adrice727@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ngFx": "~1.0.1",
+    "angular-ui-router": "~0.2.10"
+  }
+}
