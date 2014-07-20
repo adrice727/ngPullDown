@@ -1,6 +1,6 @@
 <h1>Pull-down iFrame</h1>
   
-  <div class="container" ng-controller="mainCtrl">
+  <div class="container">
   <!-- <a ng-controller="mainCtrl" ng-click="showOrHideSource">{{ viewOrHide }}</a> -->
 <!--     <button ui-sref=".source" ng-controller="mainCtrl" ng-click="showOrHideSource()">
     {{ viewOrHide }}
@@ -9,5 +9,5 @@
     <a ui-sref=".source" class="btn btn-primary"></a>
     <div ui-view ng-show="changeStatus()" class="iFrame"style="position: absolute; width: 80%; left: 0; right: 0; margin:auto; background-color: white"></div>
     <br>
-    <div ui-view="article" class="{{getArticleClass()}}"></div>
+    <div ui-view="article" ng-class="$scope.articleClass"></div>
   </div>
