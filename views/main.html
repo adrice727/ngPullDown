@@ -1,13 +1,13 @@
 <h1>Pull-down iFrame</h1>
   
-  <div style="position: relative; overflow: auto" ng-controller="mainCtrl">
+  <div class="container" ng-controller="mainCtrl">
   <!-- <a ng-controller="mainCtrl" ng-click="showOrHideSource">{{ viewOrHide }}</a> -->
     <button ui-sref=".source" ng-controller="mainCtrl" ng-click="showOrHideSource()">
     {{ viewOrHide }}
     </button>
     <button ng-controller="mainCtrl" ng-click="changeStatus()">show or hide</button>
     <a ui-sref=".source" class="btn btn-primary"></a>
-    <div ui-view ng-show="changeStatus()" class="fx-fade-down fx-easing-bounce fx-speed-800 fx-trigger" style="position: absolute; width: 80%; left: 0; right: 0; margin:auto; background-color: white"></div>
+    <div ui-view ng-show="changeStatus()" class="iFrame"></div>
     <br>
-    <div ui-view="article" position="absolute"></div>
+    <div ui-view="article" class="{{articleClass}}"></div>
   </div>

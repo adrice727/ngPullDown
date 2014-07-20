@@ -1,0 +1,19 @@
+.container {
+  position: relative; 
+  overflow: auto
+}
+
+.greyout {
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+}
+
+.iFrame {
+  position: absolute; 
+  width: 80%; 
+  left: 0; 
+  right: 0; 
+  margin: auto; 
+  background-color: white;
+  z-index: 2;
+}
