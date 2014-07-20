@@ -34,6 +34,11 @@ angular.module('ngPullDown', ['ui.router', 'ngFx'])
   $scope.viewOrHide = 'View Source';
   $scope.sourceHidden = false;
 
+  $scope.changeStatus = function() {
+    $scope.sourceHidden = !$scope.sourceHidden;
+    return $scope.sourceHidden;
+  };
+
   // $scope.viewSource = function() {
   //   if ( $scope.sourceHidden === true ) {
   //     $scope.sourceHidden = false;
