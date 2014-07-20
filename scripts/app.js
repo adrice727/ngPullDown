@@ -32,36 +32,28 @@ angular.module('ngPullDown', ['ui.router', 'ngFx'])
 
   // $scope.contentSource = 'http://www.washingtonpost.com/world/israel-launches-ground-invasion-of-gaza/2014/07/18/8c751f72-0e41-11e4-8c9a-923ecc0c7d23_story.html?hpid=z2';
   $scope.viewOrHide = 'View Source';
-  $scope.sourceHidden = false;
+  $scope.sourceLoaded = false;
+  $scope.sourceHidden = true;
+  $scope.articleClass = '';
 
   $scope.changeStatus = function() {
-    $scope.sourceHidden = !$scope.sourceHidden;
-    return $scope.sourceHidden;
+    if ( $scope.sourceLoaded ) {
+      $scope.sourceHidden = !$scope.sourceHidden;
+      $scope.articleClass = $scope.sourceHidden ? 'greyout' : 'greyout'; // Fix me
+      $scope.buttonText = $scope.sourceHidden ? 'View Source' : 'Hide Source';
+      return $scope.sourceHidden;
+    }
   };
 
-  // $scope.viewSource = function() {
-  //   if ( $scope.sourceHidden === true ) {
-  //     $scope.sourceHidden = false;
-  //     $state.go('main.source');
-  //     $scope.viewOrHide = 'Hide Source'
-  //   } else {
-  //     $state.go('main');
-  //     $scope.sourceHidden = true;
-  //     $scope.viewOrHide = 'View Source';
-  //   }
-  // }
+  setTimeout(function(){ loadSource(); }, 1000);
 
-  // $scope.showOrHideSource = function(){
-  //   console.log('here', $scope.viewOrHide);
-  //   console.log('function called');
-  //   if ( $scope.sourceHidden === true ) {
-  //     $state.go('main.source');
-  //     $scope.sourceHidden = false;
-  //   } else {
-  //     $scope.sourceHiden = false;
-  //   }
+  var loadSource = function() {
+    $state.go('main.source');
+    $scope.sourceLoaded = true;
+  };
 
-
-  // };
+  $scope.getArticleClass = function() {
+    return $scope.articleClass;
+  };
 
 });
