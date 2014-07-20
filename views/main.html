@@ -2,12 +2,11 @@
   
   <div class="container" ng-controller="mainCtrl">
   <!-- <a ng-controller="mainCtrl" ng-click="showOrHideSource">{{ viewOrHide }}</a> -->
-    <button ui-sref=".source" ng-controller="mainCtrl" ng-click="showOrHideSource()">
-    {{ viewOrHide }}
+    <button ui-sref=".source" ng-controller="mainCtrl" ng-click="showSource()">
+    {{ buttonText }}
     </button>
     <button ng-controller="mainCtrl" ng-click="changeStatus()">show or hide</button>
-    <a ui-sref=".source" class="btn btn-primary"></a>
-    <div ui-view ng-show="changeStatus()" class="iFrame"></div>
+    <div ui-view ng-show="showSource()" class="iFrame"></div>
     <br>
     <div ui-view="article" class="{{articleClass}}"></div>
   </div>

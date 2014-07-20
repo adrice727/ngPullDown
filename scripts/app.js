@@ -18,12 +18,6 @@ angular.module('ngPullDown', ['ui.router', 'ngFx'])
       url: '/main/source',
       templateUrl: 'views/source.html',
       controller: 'mainCtrl',
-      animation: {
-        enter: 'slide-in-left-fade',
-        leave: 'slide-out-right-fade',
-        ease: 'sine',
-        speed:'2000'
-      }
     });
  
 })
@@ -31,12 +25,20 @@ angular.module('ngPullDown', ['ui.router', 'ngFx'])
 .controller('mainCtrl', function($scope, $state) {
 
   // $scope.contentSource = 'http://www.washingtonpost.com/world/israel-launches-ground-invasion-of-gaza/2014/07/18/8c751f72-0e41-11e4-8c9a-923ecc0c7d23_story.html?hpid=z2';
-  $scope.viewOrHide = 'View Source';
-  $scope.sourceHidden = false;
 
-  $scope.changeStatus = function() {
+  $scope.sourceHidden = true;
+  $scope.buttonText = 'View Source';
+  $scope.articleClass = 'article';
+
+  $scope.showSource = function() {
     $scope.sourceHidden = !$scope.sourceHidden;
+    $scope.articleClass = $scope.sourceHidden ? 'greyout' : '';
+    $scope.buttonText = $scope.sourceHidden ? 'View Source' : 'Hide Source';
     return $scope.sourceHidden;
+  };
+
+  $scope.updateButton = function() {
+    return $scope.buttonText;
   };
 
   // $scope.viewSource = function() {
