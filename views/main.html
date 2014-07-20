@@ -6,8 +6,8 @@
     {{ viewOrHide }}
     </button> -->
     <button ng-controller="mainCtrl" ng-click="changeStatus()">show or hide</button>
-    <a ui-sref=".source" class="btn btn-primary"></a>
-    <div ui-view ng-show="changeStatus()" class="iFrame"style="position: absolute; width: 80%; left: 0; right: 0; margin:auto; background-color: white"></div>
+    <div ui-view ng-show="changeStatus()" class='iFrame'style="position: absolute; width: 80%; left: 0; right: 0; margin:auto; background-color: white"></div>
     <br>
-    <div ui-view="article" ng-class="$scope.articleClass"></div>
+    <!-- <div ui-view="article" stye="opacity: 0.4;filter: alpha(opacity=40)"></div> -->
+    <div ui-view="article"></div>
   </div>

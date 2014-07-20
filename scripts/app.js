@@ -28,12 +28,12 @@ angular.module('ngPullDown', ['ui.router', 'ngFx'])
   $scope.viewOrHide = 'View Source';
   $scope.sourceLoaded = false;
   $scope.sourceHidden = true;
-  $scope.articleClass = 'greyout';
+  $scope.articleClass = 'article';
 
   $scope.changeStatus = function() {
     if ( $scope.sourceLoaded ) {
       $scope.sourceHidden = !$scope.sourceHidden;
-      // $scope.articleClass = $scope.sourceHidden ? '' : 'greyout'; // Fix me
+      $scope.articleClass = $scope.sourceHidden ? 'article' : 'greyout';
       $scope.buttonText = $scope.sourceHidden ? 'View Source' : 'Hide Source';
       return $scope.sourceHidden;
     }
