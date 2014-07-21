@@ -22,9 +22,8 @@ angular.module('ngPullDown', ['ui.router', 'ngFx'])
  
 })
 
-.controller('mainCtrl', function($scope, $state) {
+.controller('mainCtrl', function($scope, $state, $log) {
 
-  // $scope.contentSource = 'http://www.washingtonpost.com/world/israel-launches-ground-invasion-of-gaza/2014/07/18/8c751f72-0e41-11e4-8c9a-923ecc0c7d23_story.html?hpid=z2';;
   $scope.viewOrHide = 'View Source';
   $scope.sourceLoaded = false;
   $scope.sourceHidden = true;
@@ -35,6 +34,7 @@ angular.module('ngPullDown', ['ui.router', 'ngFx'])
       $scope.sourceHidden = !$scope.sourceHidden;
       $scope.articleClass = $scope.sourceHidden ? 'article' : 'greyout';
       $scope.buttonText = $scope.sourceHidden ? 'View Source' : 'Hide Source';
+
       return $scope.sourceHidden;
     }
   };

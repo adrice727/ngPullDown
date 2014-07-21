@@ -6,8 +6,8 @@
     {{ viewOrHide }}
     </button> -->
     <button ng-controller="mainCtrl" ng-click="changeStatus()">show or hide</button>
-    <div ui-view ng-show="changeStatus()" class='iFrame'style="position: absolute; width: 80%; left: 0; right: 0; margin:auto; background-color: white"></div>
+    <div ui-view ng-show="changeStatus()" class="iFrame"></div>
     <br>
-    <!-- <div ui-view="article" stye="opacity: 0.4;filter: alpha(opacity=40)"></div> -->
-    <div ui-view="article"></div>
+    <!-- The expression in ng-class always evaluates to false wmmt it's not being found -->
+    <div ui-view="article" ng-class="{'greyout' : !sourceHidden }"></div>
   </div>
