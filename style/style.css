@@ -4,8 +4,8 @@
 }
 
 .greyout {
-  opacity: 0.4;
-  filter: alpha(opacity=40);
+  color: gray;
+  opacity: 0.5;
 }
 
 .iFrame {
@@ -15,5 +15,11 @@
   right: 0; 
   margin: auto; 
   background-color: white;
+  z-index: 2;
+}
+
+.iFrameSize {
+  height: 800px;
+  width: 100%; 
   z-index: 2;
 }

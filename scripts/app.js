@@ -17,37 +17,60 @@ angular.module('ngPullDown', ['ui.router', 'ngFx'])
     .state('main.source', {
       url: '', 
       templateUrl: 'views/source.html',
-      controller: 'mainCtrl',
+      controller: 'iFrameCtrl',
     });
  
 })
 
-.controller('mainCtrl', function($scope, $state, $log) {
+.service('articleSource', function() {
+  sourceHidden = true;
+  sourceLoaded = false;
+
+  return {
+
+    load: function(){
+      sourceLoaded = true;
+    },
+    isLoaded: function(){
+      return sourceLoaded;
+    },
+    hidden: function(){
+      return sourceHidden;
+    },
+    showOrHide: function(){
+      sourceHidden = !sourceHidden;
+    }
+  }
+})
+
+.controller('mainCtrl', function($scope, $state, articleSource) {
 
   $scope.viewOrHide = 'View Source';
   $scope.sourceLoaded = false;
-  $scope.sourceHidden = true;
-  $scope.articleClass = 'article';
+  $scope.sourceHidden = articleSource.hidden();
 
-  $scope.changeStatus = function() {
-    if ( $scope.sourceLoaded ) {
-      $scope.sourceHidden = !$scope.sourceHidden;
-      $scope.articleClass = $scope.sourceHidden ? 'article' : 'greyout';
-      $scope.buttonText = $scope.sourceHidden ? 'View Source' : 'Hide Source';
-
-      return $scope.sourceHidden;
-    }
-  };
 
   setTimeout(function(){ loadSource(); }, 1000);
 
-  var loadSource = function() {
+  var loadSource = function(){
     $state.go('main.source');
+    articleSource.load();
     $scope.sourceLoaded = true;
   };
 
-  $scope.getArticleClass = function() {
-    return $scope.articleClass;
+  $scope.showOrHideSource = function() {
+    if ( $scope.sourceLoaded ) {
+      articleSource.showOrHide()
+      $scope.viewOrHide = articleSource.hidden() ? 'View Source' : 'Hide Source';
+    }
+  }
+
+})
+
+.controller('iFrameCtrl', function($scope, $state, $log, articleSource) {
+
+  $scope.showOrHide = function() {
+    return !articleSource.hidden();
   };
 
-});
+})
