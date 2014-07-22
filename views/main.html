@@ -1,9 +1,11 @@
-<h1>Pull-down iFrame</h1>
-  
-  <div class="container">
-    <button ng-controller="mainCtrl" ng-click="showOrHideSource()">{{viewOrHide}}</button>
-    <div ui-view ng-show="showOrHide()" class="iFrame"></div>
-    <br>
-    <!-- The expression in ng-class always evaluates to false wmmt it's not being found -->
-    <div ui-view="article" ng-class="{'greyout': viewOrHide === 'View Source'}"></div>
-  </div>
+<div ng-controller='mainCtrl'>
+  <h1 class="things">Pull-down iFrame</h1>
+    <div class="container">
+      <button ng-click="showOrHideSource()">{{viewOrHide}}</button>
+      <div ui-view ng-show="showOrHide()" class="iFrame fx-fade-down"></div>
+      <br>
+      <!-- The expression in ng-class always evaluates to false wmmt it's not being found -->
+      <div ui-view="article" ng-class="{'greyout': !sourceHidden}"></div>
+
+    </div>
+</div>

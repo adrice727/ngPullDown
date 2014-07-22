@@ -1,3 +1,7 @@
+.things {
+  text-align: center;
+}
+
 .container {
   position: relative; 
   overflow: auto

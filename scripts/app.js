@@ -47,7 +47,7 @@ angular.module('ngPullDown', ['ui.router', 'ngFx'])
 
   $scope.viewOrHide = 'View Source';
   $scope.sourceLoaded = false;
-  $scope.sourceHidden = articleSource.hidden();
+  $scope.sourceHidden = true;
 
 
   setTimeout(function(){ loadSource(); }, 1000);
@@ -62,8 +62,11 @@ angular.module('ngPullDown', ['ui.router', 'ngFx'])
     if ( $scope.sourceLoaded ) {
       articleSource.showOrHide()
       $scope.viewOrHide = articleSource.hidden() ? 'View Source' : 'Hide Source';
+      $scope.sourceHidden = articleSource.hidden();
     }
   }
+
+  $scope.title = 'Yo';
 
 })
 
