@@ -12,6 +12,7 @@ angular.module('ngPullDown', ['ui.router', 'ngFx'])
       views: {
         '': { templateUrl: 'views/main.html'},
         'article@main' : { templateUrl: 'views/article.html'},
+        'source@main' : { templateUrl: 'views/source.html'}
       }
     });
  
@@ -27,15 +28,19 @@ angular.module('ngPullDown', ['ui.router', 'ngFx'])
   setTimeout(function(){ setSource(); }, 1000);
 
   var setSource = function() {
+    console.log('getting here');
     $scope.currentSourceUrl = $sce.trustAsResourceUrl(sourceUrl);
-    $scope.sourceLoaded = true;
+    sourceLoaded = true;
   };
 
   $scope.showOrHideSource = function() {
+    console.log('step 1');
+    console.log('loaded', sourceLoaded);
     if ( sourceLoaded ) {
+      console.log('step 2');
       $scope.showSource = !$scope.showSource;
-      $scope.viewOrHide = $scope.showSource? 'View Source' : 'Hide Source';
+      $scope.viewOrHide = !$scope.showSource? 'View Source' : 'Hide Source';
     }
   };
 
-})
+});

@@ -1,11 +1,11 @@
 <div ng-controller='mainCtrl'>
-  <div ui-view="source" ng-class="{'hidden': !sourceHidden}"></div>
   <h1 class="things">Pull-down iFrame</h1>
     <div class="container">
       <button ng-click="showOrHideSource()">{{viewOrHide}}</button>
-      <div ui-view ng-show="showOrHide()" class="iFrame fx-fade-down"></div>
       <br>
-      <div ui-view="article" ng-class="{'greyout': !sourceHidden}"></div>
-
+      <div class="container">
+        <div ui-view="source" ng-class="{'hidden': !showSource}" class="iFrame"></div>
+        <div ui-view="article" ng-class="{'greyout': showSource}"></div>
+      </div>
     </div>
 </div>
