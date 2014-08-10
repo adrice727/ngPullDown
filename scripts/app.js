@@ -11,69 +11,31 @@ angular.module('ngPullDown', ['ui.router', 'ngFx'])
       controller: 'mainCtrl',
       views: {
         '': { templateUrl: 'views/main.html'},
-        'article@main' : { templateUrl: 'views/article.html'}
+        'article@main' : { templateUrl: 'views/article.html'},
       }
-    })
-    .state('main.source', {
-      url: '', 
-      templateUrl: 'views/source.html',
-      controller: 'iFrameCtrl',
     });
  
 })
 
-.service('articleSource', function() {
-  sourceHidden = true;
-  sourceLoaded = false;
-
-  return {
-
-    load: function(){
-      sourceLoaded = true;
-    },
-    isLoaded: function(){
-      return sourceLoaded;
-    },
-    hidden: function(){
-      return sourceHidden;
-    },
-    showOrHide: function(){
-      sourceHidden = !sourceHidden;
-    }
-  }
-})
-
-.controller('mainCtrl', function($scope, $state, articleSource) {
+.controller('mainCtrl', function($scope, $sce) {
 
   $scope.viewOrHide = 'View Source';
-  $scope.sourceLoaded = false;
-  $scope.sourceHidden = true;
+  var sourceLoaded = false;
+  $scope.showSource= false;
+  var sourceUrl = 'http://www.washingtonpost.com/world/israel-launches-ground-invasion-of-gaza/2014/07/18/8c751f72-0e41-11e4-8c9a-923ecc0c7d23_story.html?hpid=z2';
 
+  setTimeout(function(){ setSource(); }, 1000);
 
-  setTimeout(function(){ loadSource(); }, 1000);
-
-  var loadSource = function(){
-    $state.go('main.source');
-    articleSource.load();
+  var setSource = function() {
+    $scope.currentSourceUrl = $sce.trustAsResourceUrl(sourceUrl);
     $scope.sourceLoaded = true;
   };
 
   $scope.showOrHideSource = function() {
-    if ( $scope.sourceLoaded ) {
-      articleSource.showOrHide()
-      $scope.viewOrHide = articleSource.hidden() ? 'View Source' : 'Hide Source';
-      $scope.sourceHidden = articleSource.hidden();
+    if ( sourceLoaded ) {
+      $scope.showSource = !$scope.showSource;
+      $scope.viewOrHide = $scope.showSource? 'View Source' : 'Hide Source';
     }
-  }
-
-  $scope.title = 'Yo';
-
-})
-
-.controller('iFrameCtrl', function($scope, $state, $log, articleSource) {
-
-  $scope.showOrHide = function() {
-    return !articleSource.hidden();
   };
 
 })
